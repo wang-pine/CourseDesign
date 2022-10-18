@@ -13,7 +13,8 @@ UserMainWindow::UserMainWindow(QWidget *parent):
     tipLbl->setText(tr("请选择功能"));
     funLabel = new QLabel(this);
     //qDebug()<< "MainWindow里面loginJud变化值"<< this->loginJud << endl;
-    funLabel->setText(tr("user"));
+
+    funLabel->setText(tr("user"));      //显示是哪位user
     funLabel->move(20,60);
 
     userBuyBtn = new QPushButton(this);
