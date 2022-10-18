@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>LoginWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#LoginWindow{
+border-image:url(:/Pic/backGround.png);
+}</string>
+  </property>
  </widget>
  <resources/>
  <connections/>

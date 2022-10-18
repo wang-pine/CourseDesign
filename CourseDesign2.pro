@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui\
+            widgets\
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,14 +17,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    admin_gamble.cpp \
+    admin_goods.cpp \
+    admin_user.cpp \
     adminmainwindow.cpp \
     main.cpp \
     loginwindow.cpp \
+    user_buy.cpp \
+    user_gamble.cpp \
     usermainwindow.cpp
 
 HEADERS += \
+    admin_gamble.h \
+    admin_goods.h \
+    admin_user.h \
     adminmainwindow.h \
     loginwindow.h \
+    user_buy.h \
+    user_gamble.h \
     usermainwindow.h
 
 FORMS += \
@@ -33,3 +44,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc

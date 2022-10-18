@@ -2,11 +2,14 @@
 #include "ui_loginwindow.h"
 #include <QMessageBox>
 #include <QDebug>
+#include <QAction>
 LoginWindow::LoginWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
+    //去掉标题栏
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint); // 去掉标题栏,去掉任务栏显示，窗口置顶
     //设置窗体标题
     this->setWindowTitle(tr("登录界面"));
     this->resize(350,350);
@@ -33,22 +36,22 @@ LoginWindow::LoginWindow(QWidget *parent)
 
     //登录按钮
     loginBtn = new QPushButton(this);
-    loginBtn->move(80,200);
+    loginBtn->move(70,200);
     loginBtn->setText("登录");
 
     //退出按钮
     exitBtn = new QPushButton(this);
-    exitBtn->move(170,200);
+    exitBtn->move(200,200);
     exitBtn->setText("退出");
 
     //忘记密码
     forgetPwd = new QPushButton(this);
-    forgetPwd->move(80,230);
+    forgetPwd->move(70,240);
     forgetPwd->setText("忘记密码");
 
     //注册账号
     registerAccount = new QPushButton(this);
-    registerAccount->move(170,230);
+    registerAccount->move(200,240);
     registerAccount->setText("注册账号");
 
     //单击登录按钮时 执行 LoginForm::login 槽函数(自定义)；单击退出按钮时 执行 LoginForm::close 槽函数(窗体的关闭函数，不用自己写)
