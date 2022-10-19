@@ -16,13 +16,14 @@ class admin_user:public QDialog
 
 public slots:
     void addRowsSolts();
-    void saveFile();
+    void saveFileSlots();
 
 public:
     explicit admin_user(QWidget *parent = 0);
     void showUser();    //显示窗口
     void hideUser();    //关闭窗口
     void autoSave();    //自动保存函数
+    void isCellEmpty();     //表格单元格是否为空的检测函数
 
     int getVaribleRows();
     void setVaribleRows();

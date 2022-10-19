@@ -13,6 +13,11 @@ admin_user::admin_user(QWidget *parent):
     addRowsBtn = new QPushButton(this);
     addRowsBtn -> setText("增加行数");
     addRowsBtn -> move(0,300);
+    addRowsBtn -> setFixedWidth(60);
+
+    saveBtn = new QPushButton(this);
+    saveBtn -> setText("保存");
+    saveBtn -> move(60,300);
 
     this->setWindowTitle(tr("admin_user"));
     this->resize(400,300);
@@ -52,6 +57,7 @@ admin_user::admin_user(QWidget *parent):
     setVaribleRows();//获取当前行数
 
     connect(addRowsBtn,&QPushButton::clicked,this,&admin_user::addRowsSolts);
+    connect(saveBtn,&QPushButton::clicked,this,&admin_user::saveFileSlots);
 }
 void admin_user::showUser()
 {
@@ -71,25 +77,48 @@ void admin_user::addRowsSolts(){
     }
     this->varibleRows += 1;
     qDebug() << "在addRowsSlots函数中结束varibleRows的值是" << this->varibleRows << endl;
+
+
 }
+
+void admin_user::saveFileSlots(){
+    //此处填写文件保存函数
+
+    isCellEmpty();
+    qDebug() << "调用文件保存函数" << endl;
+}
+
 int admin_user::getVaribleRows(){
     qDebug() << "目前情况varibleRows的值是" << varibleRows << endl;
     return varibleRows;
 
 }
+
 void admin_user::setVaribleRows(){
     varibleRows = tableView->model()->rowCount();
     qDebug() << "varibleRows当前的值" << varibleRows << endl;
 }
-void admin_user::saveFile(){
-    //此处填写文件保存函数
 
-
-    qDebug() << "调用文件保存函数" << endl;
-}
 void admin_user::autoSave(){
     //在此处实现输入检测
-
-    saveFile();
+    isCellEmpty();
+    saveFileSlots();
     qDebug() << "调用自动保存函数" << endl;
+}
+
+void admin_user::isCellEmpty(){
+    int rowCount = this->getVaribleRows();
+    qDebug() << "isCellEmpty函数开始获取表格当前行数"  << rowCount << endl;
+    for(int row = 0;row < rowCount;row ++){
+        for(int column = 0;column < 5;column ++){
+
+            if(model->item(row,column)!= nullptr){
+                qDebug() <<"第" << row << "行" << "第" << column << "列的值不为空" << endl;
+                QStandardItem *cellPtr = model->item(row,column);
+                qDebug() << cellPtr->text() << endl;
+            }else{
+                qDebug() <<"第" << row << "行" << "第" << column << "列的值为空" << endl;
+            }
+        }
+    }
 }
