@@ -5,7 +5,7 @@
 #include <QDialog>
 #include <QWidget>
 
-class admin_goods:QDialog
+class admin_goods:public QDialog
 {
 public:
     explicit admin_goods(QWidget *parent = 0);

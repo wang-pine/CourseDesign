@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <QDialog>
 
-class admin_gamble:QDialog
+class admin_gamble:public QDialog
 {
 public:
     explicit admin_gamble(QWidget *parent = 0);
