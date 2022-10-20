@@ -18,6 +18,16 @@ admin_user::admin_user(QWidget *parent):
     saveBtn = new QPushButton(this);
     saveBtn -> setText("保存");
     saveBtn -> move(60,300);
+    saveBtn -> setFixedWidth(60);
+
+    searchCellLED = new QLineEdit(this);
+    searchCellLED -> move(120,300);
+    searchCellLED -> setPlaceholderText(tr("输入搜索内容"));
+    searchCellLED -> setFixedSize(120,30);
+
+    searchCellBtn = new QPushButton(this);
+    searchCellBtn -> setText(tr("搜索"));
+    searchCellBtn -> move(240,300);
 
     this->setWindowTitle(tr("admin_user"));
     this->resize(400,300);
@@ -58,6 +68,8 @@ admin_user::admin_user(QWidget *parent):
 
     connect(addRowsBtn,&QPushButton::clicked,this,&admin_user::addRowsSolts);
     connect(saveBtn,&QPushButton::clicked,this,&admin_user::saveFileSlots);
+    connect(searchCellBtn,&QPushButton::clicked,this,&admin_user::searchCellSolts);
+
 }
 void admin_user::showUser()
 {
@@ -121,4 +133,7 @@ void admin_user::isCellEmpty(){
             }
         }
     }
+}
+void admin_user::searchCellSolts(){
+    qDebug() << "当前搜索框中的内容是" << this->searchCellLED ->text() << endl;
 }

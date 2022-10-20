@@ -10,6 +10,9 @@
 #include <QPushButton>
 #include <QStandardItem>
 #include <QTableView>
+#include <QLineEdit>
+#include <QLabel>
+
 class admin_user:public QDialog
 {
 
@@ -17,6 +20,7 @@ class admin_user:public QDialog
 public slots:
     void addRowsSolts();
     void saveFileSlots();
+    void searchCellSolts();    //槽函数：获得搜索框中的内容
 
 public:
     explicit admin_user(QWidget *parent = 0);
@@ -30,6 +34,9 @@ public:
     QPushButton *saveBtn;   //保存按钮
     QPushButton *loadBtn;   //加载按钮
     QPushButton *addRowsBtn;   //增加行数按钮
+    QPushButton *searchCellBtn; //搜索按钮
+
+    QLineEdit *searchCellLED;     //增加搜索输入框
 
     QStandardItemModel *model;  //新建数据模型
     QTableView *tableView;      //数据模型的显示
